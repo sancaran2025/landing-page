@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar na Conta - Sancaran</title>
+    <link rel="stylesheet" href="css/entrarConta.css">
+    <style>
+        .alert { display: none; padding: 8px; margin-bottom: 10px; border-radius: 4px; }
+        .error-alert { background-color: #fee2e2; color: #b91c1c; }
+        .success-alert { background-color: #dcfce7; color: #166534; }
+    </style>
+</head>
+<body>
+<header class="painel-header">
+    <div class="header-content">
+        <div class="logo-area">
+            <img src="imgs/logo.png" alt="Logo Sancaran" class="logo-img">
+            <h1>Entrar na Conta</h1>
+        </div>
+        <a href="index.html" class="back-btn">← Voltar ao Site</a>
+    </div>
+</header>
+
+<main class="login-container">
+    <div class="mascote-side">
+        <img src="imgs/pet.png" alt="Mascote Sancaran" class="mascote-img">
+    </div>
+
+    <div class="form-side">
+        <!-- Mensagens de alerta estáticas -->
+        <div id="error-alert" class="alert error-alert">⚠️ Erro ao entrar!</div>
+        <div id="success-alert" class="alert success-alert">✅ Login realizado com sucesso!</div>
+
+        <form action="#" method="post" class="auth-form">
+            <h2>Entrar na Conta</h2>
+            <p class="form-subtitle">Digite suas credenciais para acessar sua conta</p>
+
+            <div class="form-group">
+                <input type="email" id="email" name="email" placeholder="Email *" required class="form-input">
+            </div>
+
+            <div class="form-group">
+                <input type="password" id="password" name="password" placeholder="Senha *" required class="form-input">
+            </div>
+
+            <button type="submit" class="btn-primary">
+                <span class="btn-text">Entrar na Conta</span>
+            </button>
+
+            <div class="auth-footer">
+                <p>Não tem uma conta? <a href="criarConta.html" class="link">Crie uma aqui</a></p>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script>
+    document.querySelector('.auth-form').addEventListener('submit', function(e) {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (!email || !password) {
+            e.preventDefault();
+            alert('Por favor, preencha todos os campos obrigatórios.');
+            return false;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            e.preventDefault();
+            alert('Por favor, digite um email válido.');
+            return false;
+        }
+
+        // Simulação de login (sem servidor)
+        e.preventDefault();
+        document.getElementById('success-alert').style.display = 'block';
+        document.getElementById('error-alert').style.display = 'none';
+    });
+</script>
+</body>
+</html>
